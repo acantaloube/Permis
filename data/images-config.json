@@ -1,0 +1,27 @@
+{
+  "images": {
+    "dashboard": "https://images.pexels.com/photos/241188/pexels-photo-241188.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "engine-bay": "https://images.pexels.com/photos/18180571/pexels-photo-18180571.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "vehicle-exterior": "https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  "imageCredits": {
+    "dashboard": "Pexels",
+    "engine-bay": "Pexels / Giona Mason",
+    "vehicle-exterior": "Pexels"
+  },
+  "clickQuestions": {
+    "01-vi": { "image": "dashboard", "zone": { "x": 5, "y": 55, "w": 22, "h": 35 } },
+    "02-ve": { "image": "engine-bay", "zone": { "x": 8, "y": 25, "w": 25, "h": 40 } },
+    "03-vi": { "image": "dashboard", "zone": { "x": 35, "y": 5, "w": 30, "h": 18 } },
+    "04-ve": { "image": "vehicle-exterior", "zone": { "x": 18, "y": 55, "w": 15, "h": 35 } },
+    "05-vi": { "image": "dashboard", "zone": { "x": 5, "y": 55, "w": 22, "h": 35 } },
+    "06-ve": { "image": "vehicle-exterior", "zone": [{ "x": 2, "y": 65, "w": 15, "h": 25 }, { "x": 78, "y": 65, "w": 15, "h": 25 }] },
+    "08-ve": { "image": "engine-bay", "zone": { "x": 68, "y": 18, "w": 25, "h": 35 } },
+    "10-vi": { "image": "dashboard", "zone": { "x": 35, "y": 25, "w": 40, "h": 35 } },
+    "11-vi": { "image": "dashboard", "zone": { "x": 35, "y": 25, "w": 40, "h": 35 } },
+    "12-ve": { "image": "engine-bay", "zone": { "x": 5, "y": 55, "w": 22, "h": 35 } },
+    "13-vi": { "image": "dashboard", "zone": { "x": 65, "y": 40, "w": 30, "h": 40 } },
+    "14-ve": { "image": "vehicle-exterior", "zone": [{ "x": 3, "y": 55, "w": 10, "h": 30 }, { "x": 82, "y": 55, "w": 10, "h": 30 }] },
+    "15-vi": { "image": "dashboard", "zone": { "x": 35, "y": 25, "w": 40, "h": 35 } }
+  }
+}

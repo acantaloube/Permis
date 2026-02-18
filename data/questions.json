@@ -1,0 +1,325 @@
+{
+  "categories": {
+    "VI": "Vérification intérieure",
+    "VE": "Vérification extérieure",
+    "QSER": "Sécurité routière",
+    "secours": "Premiers secours"
+  },
+  "questions": [
+    {
+      "id": "01-vi",
+      "category": "VI",
+      "question": "Montrez la commande de réglage de hauteur des feux.",
+      "expectedAnswer": "Dispositif situé en général à gauche du volant.",
+      "keyPoints": ["gauche", "volant", "commande", "réglage", "hauteur"]
+    },
+    {
+      "id": "01-qser",
+      "category": "QSER",
+      "question": "Pourquoi doit-on régler la hauteur des feux ?",
+      "expectedAnswer": "Pour ne pas éblouir les autres usagers.",
+      "keyPoints": ["éblouir", "usagers", "autres"]
+    },
+    {
+      "id": "01-secours",
+      "category": "secours",
+      "question": "Comment et pourquoi protéger une zone de danger en cas d'accident de la route ?",
+      "expectedAnswer": "En délimitant clairement et largement la zone de danger de façon visible pour protéger les victimes et éviter un sur-accident.",
+      "keyPoints": ["délimiter", "visible", "protéger", "victimes", "sur-accident"]
+    },
+    {
+      "id": "02-ve",
+      "category": "VE",
+      "question": "Montrez où s'effectue le remplissage du produit lave-glace.",
+      "expectedAnswer": "Le candidat ouvre le capot et montre le bocal.",
+      "keyPoints": ["capot", "bocal", "lave-glace"]
+    },
+    {
+      "id": "02-qser",
+      "category": "QSER",
+      "question": "Pourquoi est-il préférable d'utiliser un liquide spécial en hiver ?",
+      "expectedAnswer": "Pour éviter le gel du liquide.",
+      "keyPoints": ["gel", "hiver", "éviter"]
+    },
+    {
+      "id": "02-secours",
+      "category": "secours",
+      "question": "Quels comportements adopter en cas de diffusion du signal d'alerte du SAIP ?",
+      "expectedAnswer": "Se mettre en sécurité, s'informer grâce aux médias et sites internet des autorités, respecter les consignes des autorités.",
+      "keyPoints": ["sécurité", "s'informer", "médias", "consignes", "autorités"]
+    },
+    {
+      "id": "03-vi",
+      "category": "VI",
+      "question": "Mettez le rétroviseur intérieur en position nuit.",
+      "expectedAnswer": "Si véhicule équipé d'un système automatique, le candidat l'indique.",
+      "keyPoints": ["rétroviseur", "nuit", "position"]
+    },
+    {
+      "id": "03-qser",
+      "category": "QSER",
+      "question": "Quel est l'intérêt de la position nuit du rétroviseur ?",
+      "expectedAnswer": "Ne pas être ébloui par les feux du véhicule suiveur.",
+      "keyPoints": ["ébloui", "feux", "véhicule", "suiveur"]
+    },
+    {
+      "id": "03-secours",
+      "category": "secours",
+      "question": "Comment est composé le signal d'alerte du SAIP diffusé par les sirènes ?",
+      "expectedAnswer": "Signal National d'Alerte (SNA) : variation sur trois cycles. Signal de fin d'alerte : signal continu.",
+      "keyPoints": ["SNA", "trois cycles", "variation", "signal continu", "fin d'alerte"]
+    },
+    {
+      "id": "04-ve",
+      "category": "VE",
+      "question": "Contrôlez l'état du flanc sur l'un des pneumatiques.",
+      "expectedAnswer": "En bon état, toute anomalie doit être signalée.",
+      "keyPoints": ["bon état", "anomalie", "flanc", "pneumatique"]
+    },
+    {
+      "id": "04-qser",
+      "category": "QSER",
+      "question": "Citez un endroit où l'on peut trouver les pressions préconisées pour les pneumatiques.",
+      "expectedAnswer": "Sur une plaque sur une portière, dans la notice d'utilisation, au niveau de la trappe à carburant.",
+      "keyPoints": ["plaque", "portière", "notice", "trappe", "carburant"]
+    },
+    {
+      "id": "04-secours",
+      "category": "secours",
+      "question": "Sur autoroute, comment indiquer avec précision les lieux de l'accident depuis un téléphone portable ?",
+      "expectedAnswer": "En indiquant le numéro de l'autoroute, le sens de circulation et le point kilométrique.",
+      "keyPoints": ["numéro", "autoroute", "sens", "point kilométrique"]
+    },
+    {
+      "id": "05-vi",
+      "category": "VI",
+      "question": "Faites fonctionner les essuie-glaces avants du véhicule sur la position la plus rapide.",
+      "expectedAnswer": "Actionner la commande appropriée.",
+      "keyPoints": ["essuie-glace", "rapide", "avant"]
+    },
+    {
+      "id": "05-qser",
+      "category": "QSER",
+      "question": "Comment détecter l'usure des essuie-glaces en circulation ?",
+      "expectedAnswer": "En cas de pluie, lorsqu'ils laissent des traces sur le pare-brise.",
+      "keyPoints": ["pluie", "traces", "pare-brise", "usure"]
+    },
+    {
+      "id": "05-secours",
+      "category": "secours",
+      "question": "Comment vérifier la respiration d'une victime ?",
+      "expectedAnswer": "Regarder si le ventre et la poitrine se soulèvent et sentir de l'air à l'expiration.",
+      "keyPoints": ["ventre", "poitrine", "soulèvent", "air", "expiration"]
+    },
+    {
+      "id": "06-ve",
+      "category": "VE",
+      "question": "Vérifiez l'état et la propreté des plaques d'immatriculation.",
+      "expectedAnswer": "Plaques à l'avant et à l'arrière, propres et en bon état.",
+      "keyPoints": ["avant", "arrière", "propres", "bon état"]
+    },
+    {
+      "id": "06-qser",
+      "category": "QSER",
+      "question": "Quelles sont les précautions à prendre en cas d'installation d'un porte-vélo ?",
+      "expectedAnswer": "La plaque d'immatriculation et les feux doivent être visibles.",
+      "keyPoints": ["plaque", "feux", "visibles", "immatriculation"]
+    },
+    {
+      "id": "06-secours",
+      "category": "secours",
+      "question": "Qu'est-ce qu'une perte de connaissance ?",
+      "expectedAnswer": "C'est lorsque la victime ne répond pas et ne réagit pas mais respire.",
+      "keyPoints": ["ne répond pas", "ne réagit pas", "respire"]
+    },
+    {
+      "id": "07-vi",
+      "category": "VI",
+      "question": "Vérifiez la présence du gilet de haute visibilité.",
+      "expectedAnswer": "Indiquer où il se trouve sans obligation de le sortir.",
+      "keyPoints": ["gilet", "haute visibilité", "présence"]
+    },
+    {
+      "id": "07-qser",
+      "category": "QSER",
+      "question": "En cas de panne ou d'accident, quel autre accessoire de sécurité est obligatoire ?",
+      "expectedAnswer": "Le triangle de pré-signalisation.",
+      "keyPoints": ["triangle", "pré-signalisation"]
+    },
+    {
+      "id": "07-secours",
+      "category": "secours",
+      "question": "Si un dégagement d'urgence de la victime est nécessaire, où doit-elle être déplacée ?",
+      "expectedAnswer": "Dans un endroit suffisamment éloigné du danger et de ses conséquences.",
+      "keyPoints": ["éloigné", "danger", "conséquences"]
+    },
+    {
+      "id": "08-ve",
+      "category": "VE",
+      "question": "Montrez où s'effectue le contrôle du niveau du liquide de frein.",
+      "expectedAnswer": "Le niveau est entre le mini et le maxi.",
+      "keyPoints": ["niveau", "mini", "maxi", "liquide", "frein"]
+    },
+    {
+      "id": "08-qser",
+      "category": "QSER",
+      "question": "Quelle est la conséquence d'un niveau insuffisant du liquide de frein ?",
+      "expectedAnswer": "Une perte d'efficacité du freinage.",
+      "keyPoints": ["perte", "efficacité", "freinage"]
+    },
+    {
+      "id": "08-secours",
+      "category": "secours",
+      "question": "En cas de panne ou d'accident, quel équipement de sécurité doit être porté avant de quitter le véhicule ?",
+      "expectedAnswer": "Le gilet de haute visibilité.",
+      "keyPoints": ["gilet", "haute visibilité", "avant", "sortir"]
+    },
+    {
+      "id": "09-vi",
+      "category": "VI",
+      "question": "Vérifiez la présence du certificat d'immatriculation du véhicule (carte grise).",
+      "expectedAnswer": "La photocopie est acceptée.",
+      "keyPoints": ["certificat", "immatriculation", "carte grise"]
+    },
+    {
+      "id": "09-qser",
+      "category": "QSER",
+      "question": "Quels sont les deux autres documents obligatoires à présenter en cas de contrôle ?",
+      "expectedAnswer": "L'attestation d'assurance et le permis de conduire.",
+      "keyPoints": ["assurance", "permis"]
+    },
+    {
+      "id": "09-secours",
+      "category": "secours",
+      "question": "Pourquoi l'alerte auprès des services de secours doit-elle être rapide et précise ?",
+      "expectedAnswer": "Pour permettre aux services de secours d'apporter les moyens adaptés aux victimes dans le délai le plus court.",
+      "keyPoints": ["moyens adaptés", "délai", "court", "victimes"]
+    },
+    {
+      "id": "10-vi",
+      "category": "VI",
+      "question": "Contrôlez l'état de tous les balais d'essuie-glace du véhicule.",
+      "expectedAnswer": "Vérifier l'état des balais.",
+      "keyPoints": ["balais", "essuie-glace", "état"]
+    },
+    {
+      "id": "10-qser",
+      "category": "QSER",
+      "question": "Quel est le risque de circuler avec des balais d'essuie-glace défectueux ?",
+      "expectedAnswer": "Une mauvaise visibilité en cas d'intempéries.",
+      "keyPoints": ["visibilité", "intempéries", "mauvaise"]
+    },
+    {
+      "id": "10-secours",
+      "category": "secours",
+      "question": "Quels sont les numéros d'urgence à composer ?",
+      "expectedAnswer": "18 (pompiers), 15 (SAMU), 112 (urgence UE).",
+      "keyPoints": ["18", "15", "112"]
+    },
+    {
+      "id": "11-vi",
+      "category": "VI",
+      "question": "Montrez l'indicateur de niveau de carburant.",
+      "expectedAnswer": "Sur le tableau de bord.",
+      "keyPoints": ["tableau de bord", "carburant", "niveau"]
+    },
+    {
+      "id": "11-qser",
+      "category": "QSER",
+      "question": "Quelles sont les précautions à prendre lors du remplissage du réservoir ?",
+      "expectedAnswer": "Arrêter le moteur, ne pas fumer, ne pas téléphoner.",
+      "keyPoints": ["moteur", "fumer", "téléphoner"]
+    },
+    {
+      "id": "11-secours",
+      "category": "secours",
+      "question": "Quels comportements adopter en présence d'une victime qui ne répond pas, ne réagit pas, mais respire ?",
+      "expectedAnswer": "La placer en position latérale de sécurité (PLS), alerter les secours, surveiller la respiration.",
+      "keyPoints": ["PLS", "position latérale", "alerter", "surveiller", "respiration"]
+    },
+    {
+      "id": "12-ve",
+      "category": "VE",
+      "question": "Montrez où s'effectue le remplissage du liquide de refroidissement.",
+      "expectedAnswer": "Ouvrir le capot et montrer le bocal.",
+      "keyPoints": ["capot", "bocal", "refroidissement"]
+    },
+    {
+      "id": "12-qser",
+      "category": "QSER",
+      "question": "Quel est le danger si l'on complète le niveau du liquide de refroidissement lorsque le moteur est chaud ?",
+      "expectedAnswer": "Un risque de brûlure.",
+      "keyPoints": ["brûlure", "chaud"]
+    },
+    {
+      "id": "12-secours",
+      "category": "secours",
+      "question": "Comment arrêter une hémorragie ?",
+      "expectedAnswer": "En appuyant fortement sur la plaie avec les doigts ou la paume de la main, en mettant un tissu propre.",
+      "keyPoints": ["appuyer", "fortement", "tissu propre", "plaie"]
+    },
+    {
+      "id": "13-vi",
+      "category": "VI",
+      "question": "Actionnez le dégivrage de la lunette arrière et montrez le voyant correspondant.",
+      "expectedAnswer": "Actionner et montrer le voyant.",
+      "keyPoints": ["dégivrage", "lunette", "arrière", "voyant"]
+    },
+    {
+      "id": "13-qser",
+      "category": "QSER",
+      "question": "Quelle peut être la conséquence d'une panne de dégivrage de la lunette arrière ?",
+      "expectedAnswer": "Une insuffisance ou une absence de visibilité vers l'arrière.",
+      "keyPoints": ["visibilité", "arrière", "absence"]
+    },
+    {
+      "id": "13-secours",
+      "category": "secours",
+      "question": "Hors autoroute, où doit être placé le triangle de pré-signalisation en cas de panne ou accident ?",
+      "expectedAnswer": "À environ 30 m de la panne ou de l'accident, ou avant un virage ou un sommet de côte.",
+      "keyPoints": ["30 m", "distance", "virage", "sommet"]
+    },
+    {
+      "id": "14-ve",
+      "category": "VE",
+      "question": "Contrôlez l'état, la propreté et le fonctionnement de tous les clignotants côté trottoir.",
+      "expectedAnswer": "Clignotants propres, en bon état et fonctionnels.",
+      "keyPoints": ["clignotants", "propre", "bon état", "fonctionnement"]
+    },
+    {
+      "id": "14-qser",
+      "category": "QSER",
+      "question": "Quelle est la signification d'un clignotement plus rapide ?",
+      "expectedAnswer": "Non fonctionnement de l'une des ampoules.",
+      "keyPoints": ["ampoule", "défaillante", "rapide"]
+    },
+    {
+      "id": "14-secours",
+      "category": "secours",
+      "question": "Quelles sont les conditions pour réaliser le dégagement d'urgence d'une victime ?",
+      "expectedAnswer": "La victime doit être visible, facile à atteindre, rien ne doit gêner son dégagement, et il faut être sûr de pouvoir le réaliser.",
+      "keyPoints": ["visible", "accessible", "danger", "sûr"]
+    },
+    {
+      "id": "15-vi",
+      "category": "VI",
+      "question": "Montrez le voyant d'alerte signalant une pression insuffisante d'huile dans le moteur.",
+      "expectedAnswer": "Sur le tableau de bord.",
+      "keyPoints": ["voyant", "huile", "pression", "tableau"]
+    },
+    {
+      "id": "15-qser",
+      "category": "QSER",
+      "question": "Quelles sont les conditions à respecter pour contrôler le niveau d'huile ?",
+      "expectedAnswer": "Moteur froid et sur un terrain plat.",
+      "keyPoints": ["moteur froid", "terrain plat"]
+    },
+    {
+      "id": "15-secours",
+      "category": "secours",
+      "question": "Quelles sont les trois informations à transmettre aux services de secours ?",
+      "expectedAnswer": "Le numéro de téléphone, la nature et la localisation la plus précise du problème.",
+      "keyPoints": ["téléphone", "nature", "localisation"]
+    }
+  ]
+}

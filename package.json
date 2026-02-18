@@ -1,0 +1,9 @@
+{
+  "name": "revision-permis",
+  "version": "1.0.0",
+  "description": "Révision du permis B par saisie libre avec analyse sémantique",
+  "scripts": {
+    "start": "npx serve . -p 3000",
+    "dev": "npx serve . -p 3000"
+  }
+}

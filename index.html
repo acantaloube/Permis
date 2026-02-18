@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Révision Permis – Saisie libre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-content">
+        <h1>Révision Permis B</h1>
+        <p class="subtitle">Saisie libre – Conditions d'examen réelles</p>
+        <div class="filters">
+          <button type="button" class="filter-btn active" data-category="all">Toutes</button>
+          <button type="button" class="filter-btn" data-category="VI">VI</button>
+          <button type="button" class="filter-btn" data-category="VE">VE</button>
+          <button type="button" class="filter-btn" data-category="QSER">Sécurité</button>
+          <button type="button" class="filter-btn" data-category="secours">Secours</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+        <span class="progress-text" id="progressText">0 / 0</span>
+      </div>
+
+      <article class="question-card" id="questionCard">
+        <span class="category-badge" id="categoryBadge">VI</span>
+        <h2 class="question-text" id="questionText">Chargement…</h2>
+        <form class="answer-form" id="answerForm">
+          <label for="answerInput">Votre réponse (saisie libre)</label>
+          <textarea
+            id="answerInput"
+            placeholder="Tapez votre réponse comme à l'examen…"
+            rows="4"
+            autocomplete="off"
+          ></textarea>
+          <button type="submit" class="submit-btn" id="submitBtn">
+            Vérifier ma réponse
+          </button>
+        </form>
+      </article>
+
+      <section class="feedback" id="feedback" aria-live="polite">
+        <div class="feedback-content" id="feedbackContent"></div>
+      </section>
+
+      <nav class="nav-buttons">
+        <button type="button" class="nav-btn prev" id="prevBtn" disabled>
+          ← Précédent
+        </button>
+        <button type="button" class="nav-btn next" id="nextBtn">
+          Suivant →
+        </button>
+      </nav>
+
+      <button type="button" class="random-btn" id="randomBtn" title="Question aléatoire">
+        🎲 Aléatoire
+      </button>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
