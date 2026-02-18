@@ -96,14 +96,13 @@ Réponse de l'élève :
 """${userAnswer}"""
 `;
 
-  // Modèles à essayer en ordre (certains peuvent retourner 404 selon la région / le compte)
+  // Modèles 2025 (gemini-1.5-* et gemini-pro sont dépréciés / 404)
   const MODELS = [
+    'gemini-2.5-flash',
+    'gemini-2.5-flash-lite',
     'gemini-2.0-flash',
-    'gemini-2.0-flash-exp',
     'gemini-1.5-flash',
-    'gemini-1.5-flash-8b',
     'gemini-1.5-pro',
-    'gemini-pro',
   ];
 
   const modelOverride = process.env.GEMINI_MODEL;
@@ -111,6 +110,8 @@ Réponse de l'élève :
 
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const maxRetries429 = 3;
+  // Délais plus longs : le quota gratuit (~15 req/min) se réinitialise chaque minute
+  const retryDelays429 = [4000, 8000, 12000];
 
   let lastError = null;
 
@@ -143,7 +144,7 @@ Réponse de l'élève :
           const retryAfter = parseInt(response.headers.get('Retry-After'), 10);
           const delayMs = Number.isFinite(retryAfter) && retryAfter > 0
             ? retryAfter * 1000
-            : Math.min(2000 * Math.pow(2, retryCount), 10000);
+            : retryDelays429[retryCount] || 10000;
           console.warn(`429 Too Many Requests, retry ${retryCount + 1}/${maxRetries429} dans ${delayMs}ms`);
           await sleep(delayMs);
           retryCount++;
@@ -231,7 +232,7 @@ Réponse de l'élève :
     statusCode: 502,
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      error: 'Aucun modèle Gemini disponible. Définissez GEMINI_MODEL (ex: gemini-2.0-flash) dans Netlify.',
+      error: 'Gemini indisponible (429 quota ou 404). Essayer GEMINI_MODEL=gemini-2.5-flash ou activer la facturation Google AI.',
       details: lastError,
     }),
   };
