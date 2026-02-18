@@ -1,0 +1,8 @@
+[build]
+  # Pas de build : site 100 % statique
+  command = ""
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+

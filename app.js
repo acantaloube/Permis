@@ -90,6 +90,45 @@ function analyzeAnswer(userAnswer, question) {
   return { score, found, missing, status };
 }
 
+// Analyse distante via Gemini (via fonction serverless Netlify)
+async function analyzeWithGemini(userAnswer, question) {
+  // On ne tente l'appel que si l'environnement Netlify est présent côté prod.
+  // En local (npm start) ou si la fonction n'existe pas, on retournera null
+  // pour déclencher le fallback mots-clés.
+  try {
+    const response = await fetch('/.netlify/functions/analyze-gemini', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        question: question.question,
+        expectedAnswer: question.expectedAnswer,
+        userAnswer,
+      }),
+    });
+
+    if (!response.ok) {
+      // Erreurs HTTP (fonction absente, quota, etc.) → fallback
+      console.error('Erreur HTTP analyse Gemini:', response.status);
+      return null;
+    }
+
+    const data = await response.json();
+    if (!data || typeof data !== 'object') return null;
+
+    const status = data.status || 'error';
+    const score = typeof data.score === 'number' ? data.score : 0;
+    const found = Array.isArray(data.found) ? data.found : [];
+    const missing = Array.isArray(data.missing) ? data.missing : [];
+
+    return { status, score, found, missing };
+  } catch (err) {
+    console.error('Exception lors de analyzeWithGemini:', err);
+    return null;
+  }
+}
+
 function renderFeedback(result, question) {
   const feedback = document.getElementById('feedback');
   const content = document.getElementById('feedbackContent');
@@ -170,7 +209,7 @@ function render() {
 }
 
 // Événements
-document.getElementById('answerForm').addEventListener('submit', (e) => {
+document.getElementById('answerForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   const input = document.getElementById('answerInput');
   const answer = input.value.trim();
@@ -181,7 +220,14 @@ document.getElementById('answerForm').addEventListener('submit', (e) => {
   }
 
   const q = filteredQuestions[currentIndex];
-  const result = analyzeAnswer(answer, q);
+  // 1. Tentative avec Gemini (si disponible en prod Netlify)
+  let result = await analyzeWithGemini(answer, q);
+
+  // 2. Fallback automatique sur l'analyse par mots-clés
+  if (!result) {
+    result = analyzeAnswer(answer, q);
+  }
+
   renderFeedback(result, q);
 
   document.getElementById('submitBtn').disabled = true;
