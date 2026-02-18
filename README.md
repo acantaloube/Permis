@@ -45,6 +45,8 @@ Puis ouvrez [http://localhost:3000](http://localhost:3000).
 
 > **Note** : En local, la fonction Netlify (`/.netlify/functions/analyze-gemini`) n'est pas disponible. L'app utilisera toujours l'analyse par **mots-clés**. Pour tester Gemini, déployez sur Netlify.
 
+> **Exemple Netlify** : [projet test](https://nimble-churros-b2b44c.netlify.app/)
+
 ---
 
 ## Structure du projet
