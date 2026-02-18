@@ -321,6 +321,15 @@ h1 {
   color: var(--blue-route);
 }
 
+/* Footer */
+.app-footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--gray-400);
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .app { padding: 1rem; }
