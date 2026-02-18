@@ -109,39 +109,64 @@ Réponse de l'élève :
   const modelOverride = process.env.GEMINI_MODEL;
   const modelsToTry = modelOverride ? [modelOverride] : MODELS;
 
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const maxRetries429 = 3;
+
   let lastError = null;
 
   for (const model of modelsToTry) {
     try {
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=` +
-          encodeURIComponent(GEMINI_API_KEY),
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              role: 'user',
-              parts: [{ text: prompt }],
-            },
-          ],
-        }),
-      }
-    );
+      let response;
+      let retryCount = 0;
 
-    if (!response.ok) {
-      const text = await response.text().catch(() => '');
-      lastError = { status: response.status, text };
-      if (response.status === 404) {
-        console.warn(`Modèle ${model} non trouvé (404), essai du suivant`);
-        continue;
+      while (true) {
+        response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=` +
+            encodeURIComponent(GEMINI_API_KEY),
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              contents: [
+                {
+                  role: 'user',
+                  parts: [{ text: prompt }],
+                },
+              ],
+            }),
+          }
+        );
+
+        if (response.status === 429 && retryCount < maxRetries429) {
+          const retryAfter = parseInt(response.headers.get('Retry-After'), 10);
+          const delayMs = Number.isFinite(retryAfter) && retryAfter > 0
+            ? retryAfter * 1000
+            : Math.min(2000 * Math.pow(2, retryCount), 10000);
+          console.warn(`429 Too Many Requests, retry ${retryCount + 1}/${maxRetries429} dans ${delayMs}ms`);
+          await sleep(delayMs);
+          retryCount++;
+          continue;
+        }
+
+        break;
       }
-      console.error('Erreur Gemini HTTP:', response.status, text);
-      break;
-    }
+
+      if (!response.ok) {
+        const text = await response.text().catch(() => '');
+        lastError = { status: response.status, text };
+        if (response.status === 404) {
+          console.warn(`Modèle ${model} non trouvé (404), essai du suivant`);
+          continue;
+        }
+        if (response.status === 429) {
+          console.warn(`Modèle ${model} : 429 après ${maxRetries429} retries, essai du suivant`);
+          continue;
+        }
+        console.error('Erreur Gemini HTTP:', response.status, text);
+        break;
+      }
 
     const data = await response.json();
     const parts = data?.candidates?.[0]?.content?.parts || [];
