@@ -67,7 +67,8 @@ function analyzeAnswer(userAnswer, question) {
       score: userAnswer.trim().length > 10 ? 100 : 0,
       found: [],
       missing: [],
-      status: 'success'
+      status: 'success',
+      source: 'keywords',
     };
   }
 
@@ -87,7 +88,7 @@ function analyzeAnswer(userAnswer, question) {
   if (score >= 70) status = 'success';
   else if (score >= 40) status = 'partial';
 
-  return { score, found, missing, status };
+  return { score, found, missing, status, source: 'keywords' };
 }
 
 // Analyse distante via Gemini (via fonction serverless Netlify)
@@ -122,7 +123,7 @@ async function analyzeWithGemini(userAnswer, question) {
     const found = Array.isArray(data.found) ? data.found : [];
     const missing = Array.isArray(data.missing) ? data.missing : [];
 
-    return { status, score, found, missing };
+    return { status, score, found, missing, source: 'gemini' };
   } catch (err) {
     console.error('Exception lors de analyzeWithGemini:', err);
     return null;
@@ -134,15 +135,18 @@ function renderFeedback(result, question) {
   const content = document.getElementById('feedbackContent');
   feedback.className = 'feedback ' + result.status;
 
-  let html = '';
+  const sourceLabel = result.source === 'gemini' ? 'Analyse IA' : 'Mots-clés';
+  const sourceClass = result.source === 'gemini' ? 'source-gemini' : 'source-keywords';
+
+  let html = `<span class="feedback-source ${sourceClass}">${sourceLabel}</span>`;
 
   if (result.status === 'success') {
-    html = `
+    html += `
       <h3>✓ Bonne réponse</h3>
       <p>Vous avez bien mentionné les points essentiels.</p>
     `;
   } else if (result.status === 'partial') {
-    html = `
+    html += `
       <h3>~ Réponse incomplète (${result.score}%)</h3>
       <p>Points manquants à mentionner :</p>
       <ul>
@@ -151,7 +155,7 @@ function renderFeedback(result, question) {
       <p>Points correctement identifiés : ${result.found.join(', ')}</p>
     `;
   } else {
-    html = `
+    html += `
       <h3>✗ Réponse à améliorer (${result.score}%)</h3>
       <p>Les points suivants devaient être mentionnés :</p>
       <ul>

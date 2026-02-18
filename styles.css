@@ -321,6 +321,26 @@ h1 {
   color: var(--blue-route);
 }
 
+/* Indicateur source d'analyse */
+.feedback-source {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.feedback-source.source-gemini {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.feedback-source.source-keywords {
+  background: var(--gray-200);
+  color: var(--gray-600);
+}
+
 /* Footer */
 .app-footer {
   margin-top: auto;
