@@ -194,7 +194,10 @@ function showQuestion(index) {
   document.getElementById('categoryBadge').className = 'category-badge ' + q.category;
   document.getElementById('questionText').textContent = q.question;
   document.getElementById('answerInput').value = '';
-  document.getElementById('submitBtn').disabled = false;
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = false;
+  submitBtn.classList.remove('loading');
+  submitBtn.textContent = 'Vérifier ma réponse';
 
   document.getElementById('progressFill').style.width =
     `${((index + 1) / filteredQuestions.length) * 100}%`;
@@ -224,6 +227,11 @@ document.getElementById('answerForm').addEventListener('submit', async (e) => {
   }
 
   const q = filteredQuestions[currentIndex];
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = true;
+  submitBtn.classList.add('loading');
+  submitBtn.textContent = 'Vérification…';
+
   // 1. Tentative avec Gemini (si disponible en prod Netlify)
   let result = await analyzeWithGemini(answer, q);
 
@@ -232,9 +240,9 @@ document.getElementById('answerForm').addEventListener('submit', async (e) => {
     result = analyzeAnswer(answer, q);
   }
 
+  submitBtn.classList.remove('loading');
+  submitBtn.textContent = 'Vérifier ma réponse';
   renderFeedback(result, q);
-
-  document.getElementById('submitBtn').disabled = true;
 });
 
 document.getElementById('prevBtn').addEventListener('click', () => {

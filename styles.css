@@ -214,6 +214,16 @@ h1 {
   cursor: not-allowed;
 }
 
+.submit-btn.loading {
+  cursor: wait;
+  animation: submit-pulse 1s ease-in-out infinite;
+}
+
+@keyframes submit-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
 /* Feedback */
 .feedback {
   min-height: 0;
