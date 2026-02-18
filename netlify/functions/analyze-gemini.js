@@ -96,10 +96,26 @@ Réponse de l'élève :
 """${userAnswer}"""
 `;
 
-  try {
-    const response = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' +
-        encodeURIComponent(GEMINI_API_KEY),
+  // Modèles à essayer en ordre (certains peuvent retourner 404 selon la région / le compte)
+  const MODELS = [
+    'gemini-2.0-flash',
+    'gemini-2.0-flash-exp',
+    'gemini-1.5-flash',
+    'gemini-1.5-flash-8b',
+    'gemini-1.5-pro',
+    'gemini-pro',
+  ];
+
+  const modelOverride = process.env.GEMINI_MODEL;
+  const modelsToTry = modelOverride ? [modelOverride] : MODELS;
+
+  let lastError = null;
+
+  for (const model of modelsToTry) {
+    try {
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=` +
+          encodeURIComponent(GEMINI_API_KEY),
       {
         method: 'POST',
         headers: {
@@ -118,12 +134,13 @@ Réponse de l'élève :
 
     if (!response.ok) {
       const text = await response.text().catch(() => '');
+      lastError = { status: response.status, text };
+      if (response.status === 404) {
+        console.warn(`Modèle ${model} non trouvé (404), essai du suivant`);
+        continue;
+      }
       console.error('Erreur Gemini HTTP:', response.status, text);
-      return {
-        statusCode: 502,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ error: 'Erreur Gemini HTTP', details: text }),
-      };
+      break;
     }
 
     const data = await response.json();
@@ -179,13 +196,19 @@ Réponse de l'élève :
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(result),
     };
-  } catch (err) {
-    console.error('Exception lors de l’appel Gemini:', err);
-    return {
-      statusCode: 502,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Exception lors de l’appel Gemini' }),
-    };
+    } catch (err) {
+      console.error(`Exception avec modèle ${model}:`, err);
+      lastError = { error: String(err.message) };
+    }
   }
+
+  return {
+    statusCode: 502,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      error: 'Aucun modèle Gemini disponible. Définissez GEMINI_MODEL (ex: gemini-2.0-flash) dans Netlify.',
+      details: lastError,
+    }),
+  };
 };
 
